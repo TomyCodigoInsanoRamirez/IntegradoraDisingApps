@@ -1,4 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pantallas_sipal</string>//identificador
-    <string name="str_welcome">Bienvenidos</string>
+    <string name="str_welcome">WELCOME</string>
 </resources>

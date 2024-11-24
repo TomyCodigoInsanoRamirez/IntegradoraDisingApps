@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itmPerfil"
+        android:icon="@drawable/perfil"
+        android:title="Perfil" />
+
+    <item
+        android:id="@+id/itmMateria1"
+        android:icon="@drawable/materias"
+        android:title="Materia 1" />
+
+    <item
+        android:id="@+id/itmMateria2"
+        android:icon="@drawable/materias"
+        android:title="Materia 2" />
+
+    <item
+        android:id="@+id/itmMateria3"
+        android:icon="@drawable/materias"
+        android:title="Materia 3" />
+
+    <item
+        android:id="@+id/itmCerrarSesion"
+        android:icon="@drawable/logout"
+        android:title="Cerrar Sesión" />
+</menu>
