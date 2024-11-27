@@ -36,7 +36,7 @@
             android:id="@+id/txtIngresa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:gravity="center"
             android:text="Ingresa tu correo y contraseña para Iniciar Sesión" />
 
@@ -44,7 +44,7 @@
             android:id="@+id/edtCorreo"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/rounded_edittext"
             android:ems="10"
             android:hint="Correo: "
@@ -54,7 +54,7 @@
             android:id="@+id/edtContraseña"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/rounded_edittext"
             android:ems="10"
             android:hint="Contraseña:"
