@@ -68,5 +68,12 @@
             android:backgroundTint="@color/blue"
             android:text="Iniciar Sesión" />
 
+        <Button
+            android:id="@+id/btnSalir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:text="Salir" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

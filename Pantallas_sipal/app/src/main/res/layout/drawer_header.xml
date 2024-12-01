@@ -13,12 +13,4 @@
         android:layout_height="64dp"
         app:srcCompat="@drawable/user"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vista Alumno"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:paddingTop="8dp"/>
 </LinearLayout>

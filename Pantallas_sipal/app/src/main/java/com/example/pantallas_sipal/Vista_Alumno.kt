@@ -32,6 +32,18 @@ class Vista_alumno : AppCompatActivity() {
     private lateinit var navigationView: NavigationView
     private lateinit var toolbar: Toolbar
     private var id = ""
+    private var id_grupo = ""
+    private var primerNombre = ""
+    private var nombre2 = ""
+    private var apellido1 = ""
+    private var apellido2 = ""
+    private var correo = ""
+    private var password = ""
+    private var grado = ""
+    private var grupo = ""
+    private var sexo = ""
+    private var carrera=""
+    private var estado=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVistaAlumnoBinding.inflate(layoutInflater)
@@ -50,6 +62,20 @@ class Vista_alumno : AppCompatActivity() {
                 R.id.itmPerfil -> {
                     // Navegar a la actividad Perfil
                     val intent = Intent(this@Vista_alumno, Perfil::class.java)
+                    intent.putExtra("id", id)
+                    intent.putExtra("primerNombre", primerNombre)
+                    intent.putExtra("segundoNombre", nombre2)
+                    intent.putExtra("primerApellido", apellido1)
+                    intent.putExtra("segundoApellido", apellido2)
+                    intent.putExtra("correo", correo)
+                    intent.putExtra("password", password)
+                    intent.putExtra("grado", grado)
+                    intent.putExtra("grupo", grupo)
+                    intent.putExtra("sexo", sexo)
+                    intent.putExtra("id_grupo", id_grupo)
+                    intent.putExtra("carrera", carrera)
+                    intent.putExtra("estado", estado)
+
                     startActivity(intent)
                     drawerLayout.closeDrawer(binding.navigationView) // Cerrar el drawer
                     true
@@ -76,11 +102,7 @@ class Vista_alumno : AppCompatActivity() {
             } catch (e: Exception) {
                 println("Error durante la solicitud: ${e.message}")
             }
-
         }
-
-
-
     }
 
     private fun generateQRCode(text: String): Bitmap? {
@@ -105,7 +127,7 @@ class Vista_alumno : AppCompatActivity() {
     suspend fun encontrarID(correoReferencia: String): Boolean {
         return suspendCoroutine { continuation ->
             val queue = Volley.newRequestQueue(this@Vista_alumno)
-            val endPointDatosAlumno = "http://192.168.100.40:8080/v3/alumnos"
+            val endPointDatosAlumno = "http://192.168.0.8:8080/v3/alumnos"
             val metodo = Request.Method.GET
             val body = null
             val listener = Response.Listener<JSONObject> { resultado ->
@@ -118,6 +140,19 @@ class Vista_alumno : AppCompatActivity() {
                         //correo = alumno.getString("correo")
                         if(alumno.getString("correo") == correoReferencia){
                             id = alumno.getString("id_alumno")
+                            id_grupo = alumno.getString("id_grupo")
+                            primerNombre=alumno.getString("primerNombre")
+                            nombre2=alumno.getString("segundoNombre")
+                            apellido1=alumno.getString("primerApellido")
+                            apellido2=alumno.getString("segundoApellido")
+                            correo=alumno.getString("correo")
+                            password=alumno.getString("password")
+                            sexo=alumno.getString("sexo")
+                            grado=alumno.getJSONObject("grupos").getString("grado")
+                            grupo=alumno.getJSONObject("grupos").getString("grupo")
+                            carrera=alumno.getJSONObject("grupos").getString("carrea")
+                            estado=alumno.getJSONObject("grupos").getString("estado")
+
                             println("VALOR DE IDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
                             println(id)
                             break

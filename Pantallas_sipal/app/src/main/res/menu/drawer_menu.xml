@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/itmPerfil"
-        android:icon="@drawable/perfil"
+        android:icon="@drawable/user"
         android:title="Perfil" />
 
     <item

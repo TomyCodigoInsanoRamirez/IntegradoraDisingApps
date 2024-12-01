@@ -44,11 +44,10 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.volley)
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     //Implementaciones para el codigo QR
     implementation ("com.google.zxing:core:3.5.1")

@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity() {
         var DocenteEncontrado = false
         val queue = Volley.newRequestQueue(this@MainActivity)
         binding.btnIniciarSesion.setOnClickListener {
-             usuario = binding.edtCorreo.text.toString().trim();
-             passwordRecivida = binding.edtContraseA.text.toString().trim()
+            usuario = binding.edtCorreo.text.toString().trim();
+            passwordRecivida = binding.edtContraseA.text.toString().trim()
             val builder = AlertDialog.Builder(this@MainActivity)
             if(usuario == "" || passwordRecivida == ""){
                 builder.setTitle("CAMPOS INCOMPLETOS")
@@ -52,41 +52,34 @@ class MainActivity : AppCompatActivity() {
                 builder.show()
             }else{
 
+                println("Solicitud enviadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                 lifecycleScope.launch {
                     try {
-                         AlumnoEncontrado = realizarSolicitud(usuario, passwordRecivida)
+                        println("buscando informaciónnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
+                        AlumnoEncontrado = realizarSolicitud(usuario, passwordRecivida)
                         if(AlumnoEncontrado){
+                            println("Se encontró un alumno")
                             val intent = Intent(this@MainActivity, Vista_alumno::class.java)
                             intent.putExtra("correoReferencia",usuario)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)
                         }else if(realizarSolicitudDocente(usuario,passwordRecivida)){
-                            Toast.makeText(this@MainActivity,"Yendo a pantalla docente",Toast.LENGTH_SHORT).show()
+                            println("Se encontró un docente")
+                            Toast.makeText(this@MainActivity,"Llendo a pantalla docente",Toast.LENGTH_SHORT).show()
                         }else{
                             builder.setTitle("CREDENCIALES INCORRECTAS")
-                            builder.setMessage("Asegurate de haber escrito correcatamente tu correo y contraseña")
+                            builder.setMessage("Asegurate de haber escrito correctamente tu correo y contraseña")
                             builder.setPositiveButton("De acuerdo"){dialog,_->
 
                             }
                             builder.show()
                         }
-                       // DocenteEncontrado= realizarSolicitudDocente(usuario,passwordRecivida)
+                        // DocenteEncontrado= realizarSolicitudDocente(usuario,passwordRecivida)
                     } catch (e: Exception) {
                         println("Error durante la solicitud: ${e.message}")
                     }
-
                 }
 
-
-                if(AlumnoEncontrado){
-
-                }else if(DocenteEncontrado){
-                    //val intent = Intent(this@MainActivity, Vista_alumno::class.java)
-                    //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    //startActivity(intent)
-                }else{
-
-                }
             }
         }
     }
@@ -94,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     suspend fun realizarSolicitud(usuario: String, passwordRecibida: String): Boolean {
         return suspendCoroutine { continuation ->
             val queue = Volley.newRequestQueue(this@MainActivity)
-            val endPointDatosAlumno = "http://192.168.100.40:8080/v3/alumnos"
+            val endPointDatosAlumno = "http://192.168.0.8:8080/v3/alumnos"
             val metodo = Request.Method.GET
             val body = null
             val listener = Response.Listener<JSONObject> { resultado ->
@@ -136,7 +129,7 @@ class MainActivity : AppCompatActivity() {
     suspend fun realizarSolicitudDocente(usuario: String, passwordRecibida: String): Boolean {
         return suspendCoroutine { continuation ->
             val queue = Volley.newRequestQueue(this@MainActivity)
-            val endPointDatosDocente = "http://192.168.100.40:8080/v4/docente"
+            val endPointDatosDocente = "http://192.168.0.8:8080/v4/docente"
             val metodo = Request.Method.GET
             val body = null
             val listener = Response.Listener<JSONObject> { resultado ->

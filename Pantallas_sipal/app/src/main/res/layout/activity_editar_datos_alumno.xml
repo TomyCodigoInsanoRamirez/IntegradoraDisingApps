@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarDatosAlumno">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="80dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/perfil" />
+
+        <TextView
+            android:id="@+id/txtNombreActual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Nombre Actual:" />
+
+        <EditText
+            android:id="@+id/edtNuevoNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Ingresa nuevo nombre:"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/txtSegundoNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Segundo Nombre Actual" />
+
+        <EditText
+            android:id="@+id/edtNuevoSegundoNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Ingresa nuevo nombre:"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/txtApellido1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Apellido Actual" />
+
+        <EditText
+            android:id="@+id/edtNuevoApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Ingresa nuevo apellido:"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/txtApellido2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Segundo Apellido Actual" />
+
+        <EditText
+            android:id="@+id/edtNuevoApellido2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Ingresa nuevo apellido:"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/txtContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Contraseña Actual:" />
+
+        <EditText
+            android:id="@+id/edtContra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Escribe tu contraseña actual:"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/edtCambiarContra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Escribe tu nueva contraseña:"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/edtConfirmarContra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Confirma tu nueva contraseña:"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:text="Guardar Cambios" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

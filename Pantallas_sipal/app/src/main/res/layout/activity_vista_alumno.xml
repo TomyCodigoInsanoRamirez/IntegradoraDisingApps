@@ -28,12 +28,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/txtHola"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="¡Hola, listo para escanear!"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <ImageView
                 android:id="@+id/imgQR"
-                android:layout_width="match_parent"
-                android:layout_height="268dp"
-                android:layout_marginTop="100dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="180dp"
+                app:srcCompat="@drawable/qr" />
+
         </FrameLayout>
     </LinearLayout>
 
