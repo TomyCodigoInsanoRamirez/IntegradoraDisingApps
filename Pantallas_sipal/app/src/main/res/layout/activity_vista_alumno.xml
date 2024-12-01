@@ -28,6 +28,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imgQR"
+                android:layout_width="match_parent"
+                android:layout_height="268dp"
+                android:layout_marginTop="100dp"
+                tools:srcCompat="@tools:sample/avatars" />
         </FrameLayout>
     </LinearLayout>
 
