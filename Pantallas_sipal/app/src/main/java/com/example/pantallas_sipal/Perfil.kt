@@ -30,7 +30,7 @@ class Perfil : AppCompatActivity() {
         val carrera = intent.getStringExtra("carrera")
         val estado = intent.getStringExtra("estado")
 
-        binding.txtNombre.setText(nombre + " " + nombre2 + " " + apellido1 + " "
+        binding.txtNombreDocente.setText(nombre + " " + nombre2 + " " + apellido1 + " "
         + apellido2)
         binding.txtCorreo.setText(correo)
         binding.txtGrado.setText(grado + " " + grupo)

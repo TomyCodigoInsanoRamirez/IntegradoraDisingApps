@@ -63,7 +63,7 @@ class EditarDatosAlumno : AppCompatActivity() {
         binding.txtApellido2.setText(apellido2)
 
 
-        binding.btnGuardar.setOnClickListener {
+        binding.btnGuardarDatos.setOnClickListener {
              nombre1modificado = binding.edtNuevoNombre.text.toString()
              nombre2modificado = binding.edtNuevoSegundoNombre.text.toString()
              apellido1modificado = binding.edtNuevoApellido.text.toString()
@@ -136,7 +136,7 @@ class EditarDatosAlumno : AppCompatActivity() {
     suspend fun actualizarAlumno(id: String): Boolean {
         return suspendCoroutine { continuation ->
             val queue = Volley.newRequestQueue(this@EditarDatosAlumno)
-            val endPointDatosAlumno = "http://192.168.100.40:8080/v3/alumnos/${id}"
+            val endPointDatosAlumno = "http://192.168.0.8:8080/v3/alumnos/${id}"
             val metodo = Request.Method.PUT
             val body = JSONObject()
             val grupos = JSONObject()

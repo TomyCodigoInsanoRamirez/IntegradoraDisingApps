@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itmPerfilProf"
+        android:icon="@drawable/user"
+        android:title="Perfil" />
+    <item
+        android:id="@+id/itmMateria"
+        android:icon="@drawable/materias"
+        android:title="Diseño de Apps" />
+    <item
+        android:id="@+id/itmCerrarSesionProf"
+        android:icon="@drawable/logout"
+        android:title="Cerrar Sesión" />
+</menu>

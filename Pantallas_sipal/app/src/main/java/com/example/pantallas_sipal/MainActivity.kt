@@ -66,6 +66,10 @@ class MainActivity : AppCompatActivity() {
                         }else if(realizarSolicitudDocente(usuario,passwordRecivida)){
                             println("Se encontró un docente")
                             Toast.makeText(this@MainActivity,"Llendo a pantalla docente",Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@MainActivity, Vista_Docente::class.java)
+                            //intent.putExtra("correoReferencia",usuario)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
                         }else{
                             builder.setTitle("CREDENCIALES INCORRECTAS")
                             builder.setMessage("Asegurate de haber escrito correctamente tu correo y contraseña")
@@ -87,7 +91,7 @@ class MainActivity : AppCompatActivity() {
     suspend fun realizarSolicitud(usuario: String, passwordRecibida: String): Boolean {
         return suspendCoroutine { continuation ->
             val queue = Volley.newRequestQueue(this@MainActivity)
-            val endPointDatosAlumno = "http://192.168.100.40:8080/v3/alumnos"
+            val endPointDatosAlumno = "http://192.168.0.8:8080/v3/alumnos"
             val metodo = Request.Method.GET
             val body = null
             val listener = Response.Listener<JSONObject> { resultado ->

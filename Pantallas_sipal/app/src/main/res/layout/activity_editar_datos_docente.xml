@@ -32,16 +32,16 @@
             app:srcCompat="@drawable/perfil" />
 
         <TextView
-            android:id="@+id/txtNombreActual"
+            android:id="@+id/txtNombreActualDocente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Nombre Actual:" />
 
         <EditText
-            android:id="@+id/edtNuevoNombre"
+            android:id="@+id/edtNuevoNombreDocente"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_edittext"
             android:ems="10"
@@ -49,14 +49,14 @@
             android:inputType="text" />
 
         <TextView
-            android:id="@+id/txtSegundoNombre"
+            android:id="@+id/txtSegundoNombreDocente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Segundo Nombre Actual" />
 
         <EditText
-            android:id="@+id/edtNuevoSegundoNombre"
+            android:id="@+id/edtNuevoSegundoNombreDocente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -66,14 +66,14 @@
             android:inputType="text" />
 
         <TextView
-            android:id="@+id/txtApellido1"
+            android:id="@+id/txtApellido1Docente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Apellido Actual" />
 
         <EditText
-            android:id="@+id/edtNuevoApellido"
+            android:id="@+id/edtNuevoApellidoDocente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -83,14 +83,14 @@
             android:inputType="text" />
 
         <TextView
-            android:id="@+id/txtApellido2"
+            android:id="@+id/txtApellido2Docente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Segundo Apellido Actual" />
 
         <EditText
-            android:id="@+id/edtNuevoApellido2"
+            android:id="@+id/edtNuevoApellido2Docente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -100,14 +100,14 @@
             android:inputType="text" />
 
         <TextView
-            android:id="@+id/txtContraseña"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtContraseñaDocente"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Contraseña Actual:" />
 
         <EditText
-            android:id="@+id/edtContra"
+            android:id="@+id/edtContraDocente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -117,7 +117,7 @@
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/edtCambiarContra"
+            android:id="@+id/edtCambiarContraDocente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -127,7 +127,7 @@
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/edtConfirmarContra"
+            android:id="@+id/edtConfirmarContraDocente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -137,7 +137,7 @@
             android:inputType="text" />
 
         <Button
-            android:id="@+id/btnGuardarDatos"
+            android:id="@+id/btnGuardarDatosDocente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/blue"
