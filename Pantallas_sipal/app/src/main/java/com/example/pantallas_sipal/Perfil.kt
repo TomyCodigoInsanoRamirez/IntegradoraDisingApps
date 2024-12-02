@@ -39,7 +39,7 @@ class Perfil : AppCompatActivity() {
         binding.btnEditar.setOnClickListener {
             val intent = Intent(this@Perfil, EditarDatosAlumno::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
+
             intent.putExtra("id", id)
             intent.putExtra("id_grupo", id_grupo)
             intent.putExtra("primerNombre", nombre)
@@ -53,10 +53,12 @@ class Perfil : AppCompatActivity() {
             intent.putExtra("sexo", sexo)
             intent.putExtra("carrera", carrera)
             intent.putExtra("estado", estado)
+            startActivity(intent)
         }
 
         binding.btnAtras.setOnClickListener {
             intent = Intent(this@Perfil, Vista_alumno::class.java)
+            intent.putExtra("correoReferencia",correo)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }

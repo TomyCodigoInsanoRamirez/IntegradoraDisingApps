@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -54,11 +55,13 @@ class EditarDatosAlumno : AppCompatActivity() {
         sexo = intent.getStringExtra("sexo").toString()
         carrera = intent.getStringExtra("carrera").toString()
         estado = intent.getStringExtra("estado").toString()
+        correo = intent.getStringExtra("correo").toString()
 
         binding.txtNombreActual.setText(nombre)
         binding.txtSegundoNombre.setText(nombre2)
         binding.txtApellido1.setText(apellido1)
         binding.txtApellido2.setText(apellido2)
+
 
         binding.btnGuardar.setOnClickListener {
              nombre1modificado = binding.edtNuevoNombre.text.toString()
@@ -68,17 +71,63 @@ class EditarDatosAlumno : AppCompatActivity() {
              contraActual=binding.edtContra.text.toString()
              contraNueva = binding.edtCambiarContra.text.toString()
              confirmarContra = binding.edtConfirmarContra.text.toString()
+             if(nombre1modificado == ""){
+                 nombre1modificado = nombre.toString()
+             }
+             if(nombre2modificado == ""){
+                 nombre2modificado = nombre2.toString()
+             }
+             if(apellido1modificado == ""){
+                apellido1modificado = apellido1.toString()
+            }
+
+            if(apellido2modificado == ""){
+                apellido2modificado = apellido2.toString()
+            }
+            contraActual = password.toString()
+            println("uno: "+binding.edtContra.text.toString())
+            if(binding.edtContra.text.toString() != ""){
+                println("dos: "+binding.edtContra.text.toString()+" "+password)
+                if(binding.edtContra.text.toString() != password){
+                    val builder = AlertDialog.Builder(this@EditarDatosAlumno)
+                    builder.setTitle("CONTRASEÑA INCORRECTA")
+                    builder.setMessage("La contraseña que ingresaste no es la misma que tenemos registrada.")
+                    builder.setPositiveButton("De acuerdo"){dialog,_->
+
+                    }
+                    builder.show()
+                    return@setOnClickListener // Detenemos el flujo
+
+                }else{
+                    println("tres: "+binding.edtCambiarContra.text.toString()+" "+binding.edtConfirmarContra.text.toString())
+                    if(binding.edtCambiarContra.text.toString() != binding.edtConfirmarContra.text.toString()){
+                        val builder = AlertDialog.Builder(this@EditarDatosAlumno)
+                        builder.setTitle("INCOMPATIBILIDAD DE CONTRASEÑAS")
+                        builder.setMessage("La contraseña en el campor de nueva contraseña debe ser el mismo que en el de confirmar.")
+                        builder.setPositiveButton("De acuerdo"){dialog,_->
+
+                        }
+                        builder.show()
+
+                        return@setOnClickListener // Detenemos el flujo
+                    }else{
+                        contraActual = contraNueva
+                        //cambiar()
+                    }
+                }
+            }
+
+
             lifecycleScope.launch {
                 try {
                     actualizarAlumno(id)
                     //binding.imgQR.setImageBitmap(generateQRCode(id))
+                    cambiar()
                 } catch (e: Exception) {
                     println("Error durante la solicitud: ${e.message}")
                 }
             }
-            val intent = Intent(this@EditarDatosAlumno, Perfil::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
+
 
             //Toast.makeText(this@EditarDatosAlumno,"Datos editados con exito", Toast.LENGTH_SHORT).show()
         }
@@ -87,7 +136,7 @@ class EditarDatosAlumno : AppCompatActivity() {
     suspend fun actualizarAlumno(id: String): Boolean {
         return suspendCoroutine { continuation ->
             val queue = Volley.newRequestQueue(this@EditarDatosAlumno)
-            val endPointDatosAlumno = "http://192.168.0.8:8080/v3/alumnos/${id}"
+            val endPointDatosAlumno = "http://192.168.100.40:8080/v3/alumnos/${id}"
             val metodo = Request.Method.PUT
             val body = JSONObject()
             val grupos = JSONObject()
@@ -105,6 +154,9 @@ class EditarDatosAlumno : AppCompatActivity() {
             grupos.put("carrera", carrera)
             grupos.put("estado", estado)
             body.put("grupos", grupos)
+
+            val jsonString = body.toString()
+            println(jsonString) // Solo para verificar el resultado en la consola
             val listener = Response.Listener<JSONObject> { resultado ->
                 try {
                     //var correo = ""
@@ -135,5 +187,19 @@ class EditarDatosAlumno : AppCompatActivity() {
             }
             queue.add(solicitud)
         }
+    }
+
+    private fun cambiar(){
+        val intent = Intent(this@EditarDatosAlumno, Perfil::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.putExtra("primerNombre",nombre1modificado)
+        intent.putExtra("segundoNombre",nombre2modificado)
+        intent.putExtra("primerApellido",apellido1modificado)
+        intent.putExtra("segundoApellido",apellido2modificado)
+        intent.putExtra("correo",correo)
+        intent.putExtra("sexo",sexo)
+        intent.putExtra("grado",grado)
+        intent.putExtra("grupo",grupo)
+        startActivity(intent)
     }
 }
