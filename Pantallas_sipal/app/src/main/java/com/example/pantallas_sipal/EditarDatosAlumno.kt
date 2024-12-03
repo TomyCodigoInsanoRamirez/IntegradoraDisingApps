@@ -136,7 +136,7 @@ class EditarDatosAlumno : AppCompatActivity() {
     suspend fun actualizarAlumno(id: String): Boolean {
         return suspendCoroutine { continuation ->
             val queue = Volley.newRequestQueue(this@EditarDatosAlumno)
-            val endPointDatosAlumno = "http://192.168.0.8:8080/v3/alumnos/${id}"
+            val endPointDatosAlumno = "http://192.168.100.40:8080/v3/alumnos/${id}"
             val metodo = Request.Method.PUT
             val body = JSONObject()
             val grupos = JSONObject()

@@ -28,11 +28,11 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
-                android:layout_marginTop="100dp"
+                android:id="@+id/imgAlumno"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="50dp"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
             <Button
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="220dp"
-                android:text="Registrar Asistencia" />
+                android:text="faltas" />
 
             <Button
                 android:id="@+id/btnInasistencia"

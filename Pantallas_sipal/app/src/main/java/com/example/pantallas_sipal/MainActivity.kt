@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
     suspend fun realizarSolicitud(usuario: String, passwordRecibida: String): Boolean {
         return suspendCoroutine { continuation ->
             val queue = Volley.newRequestQueue(this@MainActivity)
-            val endPointDatosAlumno = "http://192.168.0.8:8080/v3/alumnos"
+            val endPointDatosAlumno = "http://192.168.21.75:8080/v3/alumnos"
             val metodo = Request.Method.GET
             val body = null
             val listener = Response.Listener<JSONObject> { resultado ->
@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
     suspend fun realizarSolicitudDocente(usuario: String, passwordRecibida: String): Boolean {
         return suspendCoroutine { continuation ->
             val queue = Volley.newRequestQueue(this@MainActivity)
-            val endPointDatosDocente = "http://192.168.0.8:8080/v4/docente"
+            val endPointDatosDocente = "http://192.168.21.75:8080/v4/docente"
             val metodo = Request.Method.GET
             val body = null
             val listener = Response.Listener<JSONObject> { resultado ->
