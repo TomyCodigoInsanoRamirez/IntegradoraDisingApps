@@ -59,6 +59,7 @@ class Vista_Docente : AppCompatActivity() {
     private lateinit var navigationView: NavigationView
     private lateinit var toolbar: Toolbar
     private var foto = ""
+    private var valorCelda = "" //
     lateinit var posicionFechaDeHoy : BigInteger
     private lateinit var resultLauncher: ActivityResultLauncher<Intent> //QR
     lateinit var textoEscaneado : String //QR
@@ -167,8 +168,21 @@ class Vista_Docente : AppCompatActivity() {
                             }
                         }
                     } ?: throw Exception("No se encontró la columna para la fecha actual")
-                    for (i in 0 until 30){
-                        ponerFaltas("1iV8jHcPqhLqo_NN9vRMWSOATsna6o5etOk3BwX9jPBs",accessToken,".",i,posicionFechaDeHoy)
+                    for (i in 1 until 30){
+                        lifecycleScope.launch {
+                            getCellValue("1iV8jHcPqhLqo_NN9vRMWSOATsna6o5etOk3BwX9jPBs",accessToken,i,posicionFechaDeHoy){ values ->
+                                valorCelda = values
+
+                                if(valorCelda == "e"){
+                                    //valorCelda = valorCelda.substring(3,4)
+                                    //println("El valor encontrado en la celda ${i+1} es ${valorCelda}")
+                                    ponerFaltas("1iV8jHcPqhLqo_NN9vRMWSOATsna6o5etOk3BwX9jPBs",accessToken,".",i,posicionFechaDeHoy)
+                                }
+
+                            }
+
+                        }
+
                     }
                 } catch (e: Exception) {
                     println("Error al procesar el QR: ${e.message}")
@@ -573,4 +587,33 @@ class Vista_Docente : AppCompatActivity() {
 
         Volley.newRequestQueue(this).add(request)
     }
+
+    private fun getCellValue(
+        spreadsheetId: String,
+        accessToken: String,
+        rowIndex: Int,
+        columnIndex: BigInteger,
+        callback: (String) -> Unit
+    ) {
+        val url = "https://sheets.googleapis.com/v4/spreadsheets/$spreadsheetId/values/R${rowIndex + 1}C${columnIndex.toInt()+1}" // API para obtener valores en formato A1
+
+        val headers = mapOf("Authorization" to "Bearer $accessToken")
+
+        val request = object : JsonObjectRequest(
+            Request.Method.GET, url, null,
+            Response.Listener<JSONObject> { response ->
+                // Obtener el valor de la celda si existe
+                val value = response.optString("values", "e") // "values" contiene el contenido de la celda
+                callback(value)
+            },
+            Response.ErrorListener { error ->
+                println("Error al obtener el valor de la celda: ${error.message}")
+                callback("") // Devolver vacío en caso de error
+            }) {
+            override fun getHeaders(): Map<String, String> = headers
+        }
+
+        Volley.newRequestQueue(this).add(request)
+    }
+
 }
